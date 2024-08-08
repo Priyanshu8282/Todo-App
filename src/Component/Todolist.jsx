@@ -55,6 +55,7 @@ function Todolist() {
         <div className='todo-container'>
             <h2>Todo List</h2>
             <div className="input-container">
+                {alertMessage && <div className="alert-message">{alertMessage}</div>}
                 <input
                     placeholder='Enter the task'
                     value={newTodo}
@@ -68,11 +69,9 @@ function Todolist() {
                 >
                     Add Task
                 </button>
-               
             </div>
-            {alertMessage && <div className="alert-message">{alertMessage}</div>}
             <br />
-            <ul className='todo-list'>
+            <ul className={`todo-list ${todos.length > 10 ? 'multiple-tasks' : ''}`}>
                 {todos.map(todo => (
                     <li key={todo.id} className="todo-item">
                         <span className={todo.isDone ? 'done' : ''}>{todo.task}</span>
