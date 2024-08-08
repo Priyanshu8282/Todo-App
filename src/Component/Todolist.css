@@ -1,0 +1,141 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+
+  .todo-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    max-width: 100%;
+  }
+  
+
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+
+  .input-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+ 
+  .task-input {
+    width: 70%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+  
+  .task-input:focus {
+    border-color: #007BFF;
+  }
+  
+
+  .add-task-button {
+    padding: 10px;
+    border: none;
+    background-color: #007BFF;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .add-task-button:hover {
+    background-color: #0056b3;
+  }
+
+  .todo-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+
+  .todo-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .todo-item:last-child {
+    border-bottom: none;
+  }
+  
+
+  .done {
+    text-decoration: line-through;
+    color: #999;
+  }
+  
+
+  .button-group {
+    display: flex;
+    gap: 10px;
+  }
+  
+
+  button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+
+  .delete-button {
+    background-color: #FF4136;
+    color: white;
+  }
+  
+  .delete-button:hover {
+    background-color: #e02e1b;
+  }
+  
+
+  .done-button {
+    background-color: #2ECC40;
+    color: white;
+  }
+  
+  .done-button:hover {
+    background-color: #28a745;
+  }
+  
+ 
+  .mark-all-done-button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: #007BFF;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+  }
+  
+  .mark-all-done-button:hover {
+    background-color: #0056b3;
+  }
+  
