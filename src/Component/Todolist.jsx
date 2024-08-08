@@ -5,17 +5,19 @@ import './Todolist.css';
 function Todolist() {
     const [todos, setTodos] = useState([{ task: "sample task", id: uuidv4(), isDone: false }]);
     const [newTodo, setNewTodo] = useState("");
+    const [alertMessage, setAlertMessage] = useState("");
 
     const addNewTask = () => {
         if (newTodo.trim() === "") {
-          alert("please enter the input")
+            setAlertMessage("Please enter a task");
             return;
         }
         setTodos(prevArray => [
             ...prevArray,
             { task: newTodo.trim(), id: uuidv4(), isDone: false }
         ]);
-        setNewTodo(""); 
+        setNewTodo("");
+        setAlertMessage("");  // Clear the alert message after successful addition
     };
 
     const updateTodoValue = (event) => {
@@ -26,9 +28,10 @@ function Todolist() {
         setTodos(todos.filter(todo => todo.id !== id));
     };
 
-    const isDoneAll = () => {
+    const toggleDoneAll = () => {
+        const allDone = todos.every(todo => todo.isDone);
         setTodos(todos.map(todo => ({
-            ...todo, isDone: true
+            ...todo, isDone: !allDone
         })));
     };
 
@@ -36,12 +39,12 @@ function Todolist() {
         setTodos([]);
     };
 
-    const isDoneOne = (id) => {
+    const toggleDone = (id) => {
         setTodos(todos.map(todo => {
             if (todo.id === id) {
                 return {
                     ...todo,
-                    isDone: true
+                    isDone: !todo.isDone
                 };
             }
             return todo;
@@ -65,7 +68,9 @@ function Todolist() {
                 >
                     Add Task
                 </button>
+               
             </div>
+            {alertMessage && <div className="alert-message">{alertMessage}</div>}
             <br />
             <ul className='todo-list'>
                 {todos.map(todo => (
@@ -80,20 +85,20 @@ function Todolist() {
                                 Delete
                             </button>
                             <button
-                                onClick={() => isDoneOne(todo.id)}
+                                onClick={() => toggleDone(todo.id)}
                                 className="done-button"
                             >
-                                Mark As Done
+                                {todo.isDone ? 'Mark as Undone' : 'Mark as Done'}
                             </button>
                         </div>
                     </li>
                 ))}
             </ul>
             <button
-                onClick={isDoneAll}
+                onClick={toggleDoneAll}
                 className="mark-all-done-button"
             >
-                Mark All As Done
+                {todos.every(todo => todo.isDone) ? 'Mark All as Undone' : 'Mark All as Done'}
             </button>
             <button
                 onClick={deleteAll}

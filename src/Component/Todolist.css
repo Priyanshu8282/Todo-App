@@ -138,4 +138,9 @@ body {
   .mark-all-done-button:hover {
     background-color: #0056b3;
   }
+  .alert-message {
+    color: red;
+    margin-bottom: 10px;
+}
+
   
