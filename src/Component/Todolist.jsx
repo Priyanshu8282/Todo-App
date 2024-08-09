@@ -51,15 +51,21 @@ function Todolist() {
         }));
     };
 
+    const handleKeyPress = (event) => {
+        if (event.key === 'Enter') {
+            addNewTask();
+        }
+    };
+
     return (
-        <div className='todo-container'>
+        <div className={`todo-container ${todos.length > 1 ? 'multiple-tasks-container' : ''}`}>
             <h2>Todo List</h2>
             <div className="input-container">
-                {alertMessage && <div className="alert-message">{alertMessage}</div>}
                 <input
                     placeholder='Enter the task'
                     value={newTodo}
                     onChange={updateTodoValue}
+                    onKeyPress={handleKeyPress} // Add the onKeyPress event here
                     required className='task-input'
                 />
                 <br />
@@ -70,8 +76,9 @@ function Todolist() {
                     Add Task
                 </button>
             </div>
+            {alertMessage && <div className="alert-message">{alertMessage}</div>}
             <br />
-            <ul className={`todo-list ${todos.length > 10 ? 'multiple-tasks' : ''}`}>
+            <ul className='todo-list'>
                 {todos.map(todo => (
                     <li key={todo.id} className="todo-item">
                         <span className={todo.isDone ? 'done' : ''}>{todo.task}</span>
